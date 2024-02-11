@@ -1,9 +1,10 @@
+import busnes
+import shop
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 import json
 
 data = {}
-a = 0
 
 app = QApplication([])
 app.setStyleSheet("""
@@ -89,25 +90,48 @@ window = QWidget()
 window.resize(800, 700)
 mainline = QVBoxLayout()
 
-clbtn = QPushButton("cklick")
-exitbtn = QPushButton("вийти з гри")
-
-txt = QLabel('ваші гроші')
-txt2 = QLabel('НА ХРЕСТИК НЕ НАТИСКАТИ')
+with open('data.json', 'r', encoding='utf-8') as f:
+    data = json.load(f)
 
 def exitgame():
+    with open('data.json', 'w', ) as f:
+        json.dump(data, f, indent=4)
     app.quit()
 
 def cklick():
-    a += 1
+    data["money"] += 1
+    txt.setText(f'ваші гроші : {data["money"]}')
 
+
+clbtn = QPushButton("cklick")
+exitbtn = QPushButton("вийти з гри")
+btnshop = QPushButton('магазин')
+btnbusnes = QPushButton('бізнеси')
+
+txt = QLabel(f'ваші гроші : {data["money"]}')
+txt2 = QLabel('НА ХРЕСТИК НЕ НАТИСКАТИ')
+txtcar = QLabel('ваша машина :')
+txthouse = QLabel('ваша хата :')
+
+line1 = QHBoxLayout()
+line1.addWidget(txtcar)
+line1.addWidget(txthouse)
+
+line2 = QHBoxLayout()
+line2.addWidget(btnshop)
+line2.addWidget(btnbusnes)
 
 mainline.addWidget(txt2)
 mainline.addWidget(exitbtn)
+mainline.addLayout(line1)
 mainline.addWidget(clbtn)
 mainline.addWidget(txt)
+mainline.addLayout(line2)
 
 exitbtn.clicked.connect(exitgame)
+clbtn.clicked.connect(cklick)
+btnshop.clicked.connect(shop.open_window_shop)
+btnbusnes.clicked.connect(busnes.open_window_busnes)
 
 window.setLayout(mainline)
 window.show()
