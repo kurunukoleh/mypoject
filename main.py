@@ -1,5 +1,5 @@
-import busnes
-import shop
+from busnes import open_window_busnes
+from shop import open_window_shop
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 import json
@@ -107,6 +107,7 @@ clbtn = QPushButton("cklick")
 exitbtn = QPushButton("вийти з гри")
 btnshop = QPushButton('магазин')
 btnbusnes = QPushButton('бізнеси')
+btnback = QPushButton('міні гра')
 
 txt = QLabel(f'ваші гроші : {data["money"]}')
 txt2 = QLabel('НА ХРЕСТИК НЕ НАТИСКАТИ')
@@ -114,11 +115,13 @@ txtcar = QLabel('ваша машина :')
 txthouse = QLabel('ваша хата :')
 
 line1 = QHBoxLayout()
+line2 = QHBoxLayout()
+
 line1.addWidget(txtcar)
 line1.addWidget(txthouse)
 
-line2 = QHBoxLayout()
 line2.addWidget(btnshop)
+line2.addWidget(btnback)
 line2.addWidget(btnbusnes)
 
 mainline.addWidget(txt2)
@@ -130,8 +133,8 @@ mainline.addLayout(line2)
 
 exitbtn.clicked.connect(exitgame)
 clbtn.clicked.connect(cklick)
-btnshop.clicked.connect(shop.open_window_shop)
-btnbusnes.clicked.connect(busnes.open_window_busnes)
+btnshop.clicked.connect(open_window_shop)
+btnbusnes.clicked.connect(open_window_busnes)
 
 window.setLayout(mainline)
 window.show()

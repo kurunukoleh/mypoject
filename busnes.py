@@ -1,95 +1,80 @@
+
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 import json
 
 def open_window_busnes():
-    app = QApplication([])
-    app.setStyleSheet("""
-        QWidget {
-            background-color:#000000 ;
-            color : #ffffff;
-            font-size: 15px;
-            min-width: 1px;
-            min-height : 1px;
-            margin : 1 px;
-        }
-
-        QPushButton {
-            background-color: #cc0000;
-            color : #ffffff;
-            border-radius: 5px ;
-            border-color: #ff0000;
-            border-style: solid;
-            min-width: 100px;
-            min-height: 50px;
-            font-size: 15px;
-            font-family: none;
-
-        }
-
-        QPushButton:hover {
-            background-color: #ff2200;
-            color : #ffffff;
-            border-radius: 10px ;
-            border-color: #111111;
-            border-style: none;
-            border-width: 10px;
-            min-height: 50px;
-            min-width: 100px;
-            font-size: 15px;
-            font-family: none;
-
-        }
-
-
-        QLineEdit {
-            background-color: #111111 ;
-            color : #ffffff;
-            font-size: 15px;
-            border-color: #000000;
-            border-style: none;
-            border-width: 1px;
-            border-radius: 5px ;
-            min-height: 30px;
-        }
-
-        QLineEdit:hover {
-            background-color: #151515 ;
-            color : #ffffff;
-            font-size: 15px;
-            border-radius: 5px ;
-            border-color: #ff0000;
-            border-style: solid;
-            min-height: 50px;
-        }
-
-
-        QLabel{
-            background-color: #000000 ;
-            color : #ffffff;
-            font-size: 15px;
-            border-radius: 5px ;
-            border-color: #ff0000;
-            border-style: solid;
-        }
-
-        QLabel:hover{
-            background-color: #000000 ;
-            color : #ffffff;
-            font-size: 15px;
-            border-radius: 5px ;
-            border-color: #000000;
-            border-style: solid;
-            border-width: 3px;
-        }
-    """)
-    window1 = QWidget()
-    window1.resize(800, 700)
+    window = QDialog()
+    window.resize(800, 600)
     mainline = QVBoxLayout()
 
-    a = QLabel('g')
-    mainline.addWidget(a)
+    imeger1 = QLabel(".")
+    imeger2 = QLabel(".")
+    imeger3 = QLabel(".")
+    imeger4 = QLabel(".")
+    imeger5 = QLabel(".")
+    imeger6 = QLabel(".")
 
-    window1.setLayout(mainline)
-    window1.show()
-    app.exec()
+    butonop1 = QPushButton(".")
+    butonop2 = QPushButton(".")
+    butonop3 = QPushButton(".")
+    butonop4 = QPushButton(".")
+    butonop5 = QPushButton(".")
+    butonop6 = QPushButton(".")
+
+    txt1 = QLabel(".")
+    txt2 = QLabel(".")
+    txt3 = QLabel(".")
+    txt4 = QLabel(".")
+    txt5 = QLabel(".")
+    txt6 = QLabel(".")
+
+    line1 = QVBoxLayout()
+    line2 = QVBoxLayout()
+    line3 = QVBoxLayout()
+    line4 = QVBoxLayout()
+    line5 = QVBoxLayout()
+    line6 = QVBoxLayout()
+
+    line1.addWidget(imeger1)
+    line1.addWidget(butonop1)
+    line1.addWidget(txt1)
+    line2.addWidget(imeger2)
+    line2.addWidget(butonop2)
+    line2.addWidget(txt2)
+    line3.addWidget(imeger3)
+    line3.addWidget(butonop3)
+    line3.addWidget(txt3)
+    line4.addWidget(imeger4)
+    line4.addWidget(butonop4)
+    line4.addWidget(txt4)
+    line5.addWidget(imeger5)
+    line5.addWidget(butonop5)
+    line5.addWidget(txt5)
+    line6.addWidget(imeger6)
+    line6.addWidget(butonop6)
+    line6.addWidget(txt6)
+
+    ln1 = QHBoxLayout()
+    ln2 = QHBoxLayout()
+
+    ln1.addLayout(line1)
+    ln1.addLayout(line2)
+    ln1.addLayout(line3)
+    ln2.addLayout(line4)
+    ln2.addLayout(line5)
+    ln2.addLayout(line6)
+
+    mainline.addLayout(ln1)
+    mainline.addLayout(ln2)
+
+    txt1.hide()
+    txt2.hide()
+    txt3.hide()
+    txt4.hide()
+    txt5.hide()
+    txt6.hide()
+
+    window.setLayout(mainline)
+    window.show()
+    window.exec()
