@@ -6,6 +6,7 @@ import json
 import busnes
 import time
 from busnes import data2
+from setings import data
 
 ob1 = 0.001
 ob2 = 0.01
@@ -13,8 +14,6 @@ ob3 = 0.1
 ob4 = 1
 ob5 = 2
 ob6 = 3
-
-data = {}
 
 app = QApplication([])
 app.setStyleSheet("""
@@ -118,6 +117,8 @@ with open('data.json', 'r', encoding='utf-8') as f:
     txt.setText(f'ваші гроші : {data["money"]}')
 
 def exitgame():
+    with open('data.json', 'r', encoding='utf-8') as f:
+        data = json.load(f)
     data["fixtime"] = time.time()
     #data["busnes_count1"] = data2["busnes_count1"]
     #data["busnes_count2"] = data2["busnes_count2"]
@@ -133,47 +134,6 @@ def cklick():
     data["money"] += 1
     txt.setText(f'ваші гроші : {data["money"]}')
 
-def openbusnes1():
-    if data["money"] >= 1000:
-        data["money"] -= 1000
-        data["busnes_count1"] += 1
-        with open('data.json', 'w', ) as f:
-            json.dump(data, f, indent=4)
-
-def openbusnes2():
-    if data["money"] >= 1000:
-        data["money"] -= 1000
-        data["busnes_count"] += 1
-        with open('data.json', 'w', ) as f:
-            json.dump(data, f, indent=4)
-
-def openbusnes3():
-    if data["money"] >= 1000:
-        data["money"] -= 1000
-        data["busnes_count3"] += 1
-        with open('data.json', 'w', ) as f:
-            json.dump(data, f, indent=4)
-
-def openbusnes4():
-    if data["money"] >= 1000:
-        data["money"] -= 1000
-        data["busnes_count4"] += 1
-        with open('data.json', 'w', ) as f:
-            json.dump(data, f, indent=4)
-
-def openbusnes5():
-    if data["money"] >= 1000:
-        data["money"] -= 1000
-        data["busnes_count5"] += 1
-        with open('data.json', 'w', ) as f:
-            json.dump(data, f, indent=4)
-
-def openbusnes6():
-    if data["money"] >= 1000:
-        data["money"] -= 1000
-        data["busnes_count6"] += 1
-        with open('data.json', 'w', ) as f:
-            json.dump(data, f, indent=4)
 
 txt.setText(f'ваші гроші : {data["money"]}')
 

@@ -1,5 +1,5 @@
-import main
-#import funkcias
+from setings import data
+import funkcias
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 import json
@@ -51,12 +51,12 @@ def open_window_busnes():
     butonop5 = QPushButton("відкрити бізнес : програмне забезпечення")
     butonop6 = QPushButton("відкрити бізнес : холдингова компанія")
 
-    txt1 = QLabel("rgaeghaergaerh")
-    txt2 = QLabel(".")
-    txt3 = QLabel(".")
-    txt4 = QLabel(".")
-    txt5 = QLabel(".")
-    txt6 = QLabel(".")
+    txt1 = QLabel(f'відкрито : {data["busnes_count1"]}')
+    txt2 = QLabel(f'відкрито : {data["busnes_count2"]}')
+    txt3 = QLabel(f'відкрито : {data["busnes_count3"]}')
+    txt4 = QLabel(f'відкрито : {data["busnes_count4"]}')
+    txt5 = QLabel(f'відкрито : {data["busnes_count5"]}')
+    txt6 = QLabel(f'відкрито : {data["busnes_count6"]}')
 
     line1 = QVBoxLayout()
     line2 = QVBoxLayout()
@@ -104,12 +104,12 @@ def open_window_busnes():
     #txt5.hide()
     #txt6.hide()
 
-    butonop1.clicked.connect(main.openbusnes1)
-    butonop2.clicked.connect(main.openbusnes2)
-    butonop3.clicked.connect(main.openbusnes3)
-    butonop4.clicked.connect(main.openbusnes4)
-    butonop5.clicked.connect(main.openbusnes5)
-    butonop6.clicked.connect(main.openbusnes6)
+    butonop1.clicked.connect(funkcias.openbusnes1)
+    butonop2.clicked.connect(funkcias.openbusnes2)
+    butonop3.clicked.connect(funkcias.openbusnes3)
+    butonop4.clicked.connect(funkcias.openbusnes4)
+    butonop5.clicked.connect(funkcias.openbusnes5)
+    butonop6.clicked.connect(funkcias.openbusnes6)
 
     window.setLayout(mainline)
     window.show()
