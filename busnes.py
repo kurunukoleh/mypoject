@@ -1,12 +1,34 @@
-
+import main
+#import funkcias
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 import json
+import textures
+#from main import data
+
+with open('data.json', 'r', encoding='utf-8') as f:
+    data2 = json.load(f)
+
+scalepic = 128
 
 def open_window_busnes():
     window = QDialog()
     window.resize(800, 600)
     mainline = QVBoxLayout()
+
+    img1 = QPixmap(textures.busnes_texture1)
+    img2 = QPixmap(textures.busnes_texture2)
+    img3 = QPixmap(textures.busnes_texture3)
+    img4 = QPixmap(textures.busnes_texture4)
+    img5 = QPixmap(textures.busnes_texture5)
+    img6 = QPixmap(textures.busnes_texture6)
+
+    img1 = img1.scaled(scalepic , scalepic)
+    img2 = img2.scaled(scalepic, scalepic)
+    img3 = img3.scaled(scalepic, scalepic)
+    img4 = img4.scaled(scalepic, scalepic)
+    img5 = img5.scaled(scalepic, scalepic)
+    img6 = img6.scaled(scalepic, scalepic)
 
     imeger1 = QLabel(".")
     imeger2 = QLabel(".")
@@ -15,14 +37,21 @@ def open_window_busnes():
     imeger5 = QLabel(".")
     imeger6 = QLabel(".")
 
-    butonop1 = QPushButton(".")
-    butonop2 = QPushButton(".")
-    butonop3 = QPushButton(".")
-    butonop4 = QPushButton(".")
-    butonop5 = QPushButton(".")
-    butonop6 = QPushButton(".")
+    imeger1.setPixmap(img1)
+    imeger2.setPixmap(img2)
+    imeger3.setPixmap(img3)
+    imeger4.setPixmap(img4)
+    imeger5.setPixmap(img5)
+    imeger6.setPixmap(img6)
 
-    txt1 = QLabel(".")
+    butonop1 = QPushButton("відкрити бізнес : шаурма")
+    butonop2 = QPushButton("відкрити бізнес : СТО")
+    butonop3 = QPushButton("відкрити бізнес : маркет")
+    butonop4 = QPushButton("відкрити бізнес : завод")
+    butonop5 = QPushButton("відкрити бізнес : програмне забезпечення")
+    butonop6 = QPushButton("відкрити бізнес : холдингова компанія")
+
+    txt1 = QLabel("rgaeghaergaerh")
     txt2 = QLabel(".")
     txt3 = QLabel(".")
     txt4 = QLabel(".")
@@ -68,12 +97,19 @@ def open_window_busnes():
     mainline.addLayout(ln1)
     mainline.addLayout(ln2)
 
-    txt1.hide()
-    txt2.hide()
-    txt3.hide()
-    txt4.hide()
-    txt5.hide()
-    txt6.hide()
+    #txt1.hide()
+    #txt2.hide()
+    #txt3.hide()
+    #txt4.hide()
+    #txt5.hide()
+    #txt6.hide()
+
+    butonop1.clicked.connect(main.openbusnes1)
+    butonop2.clicked.connect(main.openbusnes2)
+    butonop3.clicked.connect(main.openbusnes3)
+    butonop4.clicked.connect(main.openbusnes4)
+    butonop5.clicked.connect(main.openbusnes5)
+    butonop6.clicked.connect(main.openbusnes6)
 
     window.setLayout(mainline)
     window.show()

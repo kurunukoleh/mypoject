@@ -3,13 +3,23 @@ from shop import open_window_shop
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 import json
+import busnes
+import time
+from busnes import data2
+
+ob1 = 0.001
+ob2 = 0.01
+ob3 = 0.1
+ob4 = 1
+ob5 = 2
+ob6 = 3
 
 data = {}
 
 app = QApplication([])
 app.setStyleSheet("""
     QWidget {
-        background-color:#000000 ;
+        background-color:#111111 ;
         color : #ffffff;
         font-size: 15px;
         min-width: 1px;
@@ -68,7 +78,7 @@ app.setStyleSheet("""
 
 
     QLabel{
-        background-color: #000000 ;
+        background-color: #111111 ;
         color : #ffffff;
         font-size: 15px;
         border-radius: 5px ;
@@ -77,7 +87,7 @@ app.setStyleSheet("""
     }
 
     QLabel:hover{
-        background-color: #000000 ;
+        background-color: #111111 ;
         color : #ffffff;
         font-size: 15px;
         border-radius: 5px ;
@@ -90,10 +100,31 @@ window = QWidget()
 window.resize(800, 700)
 mainline = QVBoxLayout()
 
+clbtn = QPushButton("cklick")
+exitbtn = QPushButton("вийти з гри")
+btnshop = QPushButton('магазин')
+btnbusnes = QPushButton('бізнеси')
+btnback = QPushButton('міні гра')
+
+txt = QLabel('ваші гроші :')
+txt2 = QLabel('НА ХРЕСТИК НЕ НАТИСКАТИ')
+txtcar = QLabel('ваша машина :')
+txthouse = QLabel('ваша хата :')
+
 with open('data.json', 'r', encoding='utf-8') as f:
     data = json.load(f)
+    data["money"] += round((time.time()-data["fixtime"])*(data["busnes_count1"]*ob1 + data["busnes_count2"]*ob2 + data["busnes_count3"]*ob3 + data["busnes_count4"]*ob4 + data["busnes_count5"]*ob5 + data["busnes_count6"]*ob6))
+    #round(data["money"])
+    txt.setText(f'ваші гроші : {data["money"]}')
 
 def exitgame():
+    data["fixtime"] = time.time()
+    #data["busnes_count1"] = data2["busnes_count1"]
+    #data["busnes_count2"] = data2["busnes_count2"]
+    #data["busnes_count3"] = data2["busnes_count3"]
+    #data["busnes_count4"] = data2["busnes_count4"]
+    #data["busnes_count5"] = data2["busnes_count5"]
+    #data["busnes_count6"] = data2["busnes_count6"]
     with open('data.json', 'w', ) as f:
         json.dump(data, f, indent=4)
     app.quit()
@@ -102,17 +133,49 @@ def cklick():
     data["money"] += 1
     txt.setText(f'ваші гроші : {data["money"]}')
 
+def openbusnes1():
+    if data["money"] >= 1000:
+        data["money"] -= 1000
+        data["busnes_count1"] += 1
+        with open('data.json', 'w', ) as f:
+            json.dump(data, f, indent=4)
 
-clbtn = QPushButton("cklick")
-exitbtn = QPushButton("вийти з гри")
-btnshop = QPushButton('магазин')
-btnbusnes = QPushButton('бізнеси')
-btnback = QPushButton('міні гра')
+def openbusnes2():
+    if data["money"] >= 1000:
+        data["money"] -= 1000
+        data["busnes_count"] += 1
+        with open('data.json', 'w', ) as f:
+            json.dump(data, f, indent=4)
 
-txt = QLabel(f'ваші гроші : {data["money"]}')
-txt2 = QLabel('НА ХРЕСТИК НЕ НАТИСКАТИ')
-txtcar = QLabel('ваша машина :')
-txthouse = QLabel('ваша хата :')
+def openbusnes3():
+    if data["money"] >= 1000:
+        data["money"] -= 1000
+        data["busnes_count3"] += 1
+        with open('data.json', 'w', ) as f:
+            json.dump(data, f, indent=4)
+
+def openbusnes4():
+    if data["money"] >= 1000:
+        data["money"] -= 1000
+        data["busnes_count4"] += 1
+        with open('data.json', 'w', ) as f:
+            json.dump(data, f, indent=4)
+
+def openbusnes5():
+    if data["money"] >= 1000:
+        data["money"] -= 1000
+        data["busnes_count5"] += 1
+        with open('data.json', 'w', ) as f:
+            json.dump(data, f, indent=4)
+
+def openbusnes6():
+    if data["money"] >= 1000:
+        data["money"] -= 1000
+        data["busnes_count6"] += 1
+        with open('data.json', 'w', ) as f:
+            json.dump(data, f, indent=4)
+
+txt.setText(f'ваші гроші : {data["money"]}')
 
 line1 = QHBoxLayout()
 line2 = QHBoxLayout()
