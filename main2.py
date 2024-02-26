@@ -1,6 +1,6 @@
 import textures
-from PyQt6.QtWidgets import *
-from PyQt6.QtGui import *
+from PyQt5.QtWidgets import *
+from PyQt5.QtGui import *
 import json
 import time
 ob1 = 0.001
@@ -290,74 +290,26 @@ def open_window_busnes():
     window.exec()
 
 def open_window_shop():
+    with open('buttons.json', 'r', encoding='utf-8') as f:
+        butons = json.load(f)
+    btxt = butons['btxt']
+    bubutlist = []
+    shlinelist =[]
+    sodbtnlist = []
+    imglist = []
+
     window3 = QDialog()
     window3.resize(800, 600)
     mainline3 = QVBoxLayout()
 
-    simeger1 = QLabel('.')
-    simeger2 = QLabel('.')
-    simeger3 = QLabel('.')
-    simeger4 = QLabel('.')
-    simeger5 = QLabel('.')
-    simeger6 = QLabel('.')
-    simeger7 = QLabel('.')
-    simeger8 = QLabel('.')
-    simeger9 = QLabel('.')
-    simeger10 = QLabel('.')
-    simeger11 = QLabel('.')
-    simeger12 = QLabel('.')
-    simeger13 = QLabel('.')
-    simeger14 = QLabel('.')
-    simeger15 = QLabel('.')
+    for imeger in range(15):
+        imglist.append(QLabel("."))
 
-    sbbtn1 = QPushButton('купити : ')
-    sbbtn2 = QPushButton('купити : ')
-    sbbtn3 = QPushButton('купити : ')
-    sbbtn4 = QPushButton('купити : ')
-    sbbtn5 = QPushButton('купити : ')
-    sbbtn6 = QPushButton('купити : ')
-    sbbtn7 = QPushButton('купити : ')
-    sbbtn8 = QPushButton('купити : ')
-    sbbtn9 = QPushButton('купити : ')
-    sbbtn10 = QPushButton('купити : ')
-    sbbtn11 = QPushButton('купити : ')
-    sbbtn12 = QPushButton('купити : ')
-    sbbtn13 = QPushButton('купити : ')
-    sbbtn14 = QPushButton('купити : ')
-    sbbtn15 = QPushButton('купити : ')
+    for bb in btxt:
+        bubutlist.append(QPushButton(bb))
 
-    sodbtn1 = QPushButton('застосувати :')
-    sodbtn2 = QPushButton('застосувати :')
-    sodbtn3 = QPushButton('застосувати :')
-    sodbtn4 = QPushButton('застосувати :')
-    sodbtn5 = QPushButton('застосувати :')
-    sodbtn6 = QPushButton('застосувати :')
-    sodbtn7 = QPushButton('застосувати :')
-    sodbtn8 = QPushButton('застосувати :')
-    sodbtn9 = QPushButton('застосувати :')
-    sodbtn10 = QPushButton('застосувати :')
-    sodbtn11 = QPushButton('застосувати :')
-    sodbtn12 = QPushButton('застосувати :')
-    sodbtn13 = QPushButton('застосувати :')
-    sodbtn14 = QPushButton('застосувати :')
-    sodbtn15 = QPushButton('застосувати :')
-    sodbtn16 = QPushButton('застосувати :')
-
-    sodbtn1.hide()
-    sodbtn2.hide()
-    sodbtn3.hide()
-    sodbtn4.hide()
-    sodbtn5.hide()
-    sodbtn6.hide()
-    sodbtn7.hide()
-    sodbtn8.hide()
-    sodbtn9.hide()
-    sodbtn10.hide()
-    sodbtn11.hide()
-    sodbtn12.hide()
-    sodbtn13.hide()
-    sodbtn14.hide()
-    sodbtn15.hide()
+    for sob in range(15):
+        sodbtnlist.append(QPushButton("застосувати"))
 
     stxtbitcoin =  QLabel('купити біткоїн')
     sbuybitcoinbtn = QPushButton('купити')
@@ -371,104 +323,26 @@ def open_window_shop():
     bitcoinline.addWidget(ssellbitcoinbtn)
     bitcoinline.addWidget(polesellbitcoin)
 
-    shline1 = QVBoxLayout()
-    shline2 = QVBoxLayout()
-    shline3 = QVBoxLayout()
-    shline4 = QVBoxLayout()
-    shline5 = QVBoxLayout()
-    shline6 = QVBoxLayout()
-    shline7 = QVBoxLayout()
-    shline8 = QVBoxLayout()
-    shline9 = QVBoxLayout()
-    shline10 = QVBoxLayout()
-    shline11 = QVBoxLayout()
-    shline12 = QVBoxLayout()
-    shline13 = QVBoxLayout()
-    shline14 = QVBoxLayout()
-    shline15 = QVBoxLayout()
+    for shln in range(15):
+        shlinelist.append(QVBoxLayout())
 
-
-    shline1.addWidget(simeger1)
-    shline1.addWidget(sbbtn1)
-    shline1.addWidget(sodbtn1)
-
-    shline2.addWidget(simeger2)
-    shline2.addWidget(sbbtn2)
-    shline2.addWidget(sodbtn2)
-
-    shline3.addWidget(simeger3)
-    shline3.addWidget(sbbtn3)
-    shline3.addWidget(sodbtn3)
-
-    shline4.addWidget(simeger4)
-    shline4.addWidget(sbbtn4)
-    shline4.addWidget(sodbtn4)
-
-    shline5.addWidget(simeger5)
-    shline5.addWidget(sbbtn5)
-    shline5.addWidget(sodbtn5)
-
-    shline6.addWidget(simeger6)
-    shline6.addWidget(sbbtn6)
-    shline6.addWidget(sodbtn6)
-
-    shline7.addWidget(simeger7)
-    shline7.addWidget(sbbtn7)
-    shline7.addWidget(sodbtn7)
-
-    shline8.addWidget(simeger8)
-    shline8.addWidget(sbbtn8)
-    shline8.addWidget(sodbtn8)
-
-    shline9.addWidget(simeger9)
-    shline9.addWidget(sbbtn9)
-    shline9.addWidget(sodbtn9)
-
-    shline10.addWidget(simeger10)
-    shline10.addWidget(sbbtn10)
-    shline10.addWidget(sodbtn10)
-
-    shline11.addWidget(simeger11)
-    shline11.addWidget(sbbtn11)
-    shline11.addWidget(sodbtn11)
-
-    shline12.addWidget(simeger12)
-    shline12.addWidget(sbbtn12)
-    shline12.addWidget(sodbtn12)
-
-    shline13.addWidget(simeger13)
-    shline13.addWidget(sbbtn13)
-    shline13.addWidget(sodbtn13)
-
-    shline14.addWidget(simeger14)
-    shline14.addWidget(sbbtn14)
-    shline14.addWidget(sodbtn14)
-
-    shline15.addWidget(simeger15)
-    shline15.addWidget(sbbtn15)
-    shline15.addWidget(sodbtn15)
+    for add1 in range(15):
+        shlinelist[add1].addWidget(imglist[add1])
+        shlinelist[add1].addWidget(bubutlist[add1])
+        shlinelist[add1].addWidget(sodbtnlist[add1])
 
     scarsline = QHBoxLayout()
     shousesline = QHBoxLayout()
     smambersline = QHBoxLayout()
 
-    scarsline.addLayout(shline1)
-    scarsline.addLayout(shline2)
-    scarsline.addLayout(shline3)
-    scarsline.addLayout(shline4)
-    scarsline.addLayout(shline5)
+    for it1 in range(5):
+        scarsline.addLayout(shlinelist[it1])
 
-    shousesline.addLayout(shline6)
-    shousesline.addLayout(shline7)
-    shousesline.addLayout(shline8)
-    shousesline.addLayout(shline9)
-    shousesline.addLayout(shline10)
+    for it2 in range(5 , 10):
+        shousesline.addLayout(shlinelist[it2])
 
-    smambersline.addLayout(shline11)
-    smambersline.addLayout(shline12)
-    smambersline.addLayout(shline13)
-    smambersline.addLayout(shline14)
-    smambersline.addLayout(shline15)
+    for it3 in range(10 , 15):
+        smambersline.addLayout(shlinelist[it3])
 
     mainline3.addLayout(scarsline)
     mainline3.addLayout(shousesline)
