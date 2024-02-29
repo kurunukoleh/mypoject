@@ -293,17 +293,25 @@ def open_window_shop():
     with open('buttons.json', 'r', encoding='utf-8') as f:
         butons = json.load(f)
     btxt = butons['btxt']
+    imgtxt = butons['imgtxt']
     bubutlist = []
     shlinelist =[]
     sodbtnlist = []
     imglist = []
+    pixmaplist = []
 
     window3 = QDialog()
-    window3.resize(800, 600)
+    window3.resize(1200, 800)
     mainline3 = QVBoxLayout()
+
+    for img in imgtxt:
+        pixmaplist.append(QPixmap(img).scaled(128 , 128))
 
     for imeger in range(15):
         imglist.append(QLabel("."))
+
+    for setim in range(15):
+        imglist[setim].setPixmap(pixmaplist[setim])
 
     for bb in btxt:
         bubutlist.append(QPushButton(bb))
