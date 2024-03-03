@@ -336,12 +336,14 @@ def open_window_shop():
     polebuybitcoin = QLineEdit()
     ssellbitcoinbtn = QPushButton('продати')
     polesellbitcoin = QLineEdit()
+    sbitcointxt = QLabel(f'біткойнів у вас : {data["bitcoincount"]}')
     bitcoinline = QHBoxLayout()
     bitcoinline.addWidget(stxtbitcoin)
     bitcoinline.addWidget(sbuybitcoinbtn)
     bitcoinline.addWidget(polebuybitcoin)
     bitcoinline.addWidget(ssellbitcoinbtn)
     bitcoinline.addWidget(polesellbitcoin)
+    bitcoinline.addWidget(sbitcointxt)
 
     for shln in range(15):
         shlinelist.append(QVBoxLayout())
@@ -538,14 +540,20 @@ def open_window_shop():
         teh = requests.get('https://cex.io/api/last_price/BTC/USD')
         if teh.status_code == 200:
             cost = json.loads(teh.text)
-            cost2 = int(cost["lprice"])
+            cost2 = float(cost["lprice"])
+        else:
+            print("sssddsdsddasfsgg")
         nonlocal polebuybitcoin
+        count = int(polebuybitcoin.text())
         global data
-        if data['money'] >= cost2*polebuybitcoin.text():
-            data['money'] -= cost2*polebuybitcoin.text()
+        if data['money'] >= cost2*count:
+            data['money'] -= cost2*count
+            data['bitcoincount'] += count
             with open('data.json', 'w', ) as f:
                 json.dump(data, f, indent=4)
             txt.setText(f'ваші гроші : {data["money"]}')
+            nonlocal sbitcointxt
+            sbitcointxt.setText(f'біткойнів у вас : {data["bitcoincount"]}')
 
 
     bubutlist[0].clicked.connect(buy1)
