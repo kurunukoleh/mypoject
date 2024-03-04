@@ -111,11 +111,24 @@ txtmamber = QLabel('ваш предмет :')
 
 with open('data.json', 'r', encoding='utf-8') as f:
     data = json.load(f)
-    data["money"] += round((time.time() - data["fixtime"]) * (
-                data["busnes_count1"] * ob1 + data["busnes_count2"] * ob2 + data["busnes_count3"] * ob3 + data[
-            "busnes_count4"] * ob4 + data["busnes_count5"] * ob5 + data["busnes_count6"] * ob6))
-    # round(data["money"])
-    txt.setText(f'ваші гроші : {data["money"]}')
+
+data["money"] += round((time.time() - data["fixtime"]) * (data["busnes_count1"] * ob1 + data["busnes_count2"] * ob2 + data["busnes_count3"] * ob3 + data["busnes_count4"] * ob4 + data["busnes_count5"] * ob5 + data["busnes_count6"] * ob6))
+# round(data["money"])
+txt.setText(f'ваші гроші : {data["money"]}')
+try:
+    txtcar.setPixmap(QPixmap(data['thiscar']).scaled(128,128))
+except:
+    txtcar.setText('ваша машина :')
+
+try:
+    txthouse.setPixmap(QPixmap(data['thishouse']).scaled(128,128))
+except:
+    txtcar.setText('ваша машина :')
+
+try:
+    txtmamber.setPixmap(QPixmap(data['thismember']).scaled(128,128))
+except:
+    txtcar.setText('ваша машина :')
 
 
 def exitgame():
@@ -536,6 +549,157 @@ def open_window_shop():
             global txt
             txt.setText(f'ваші гроші : {data["money"]}')
 
+    def col1():
+        global data
+        if data['buylist'][0] == 1:
+            data['thiscar'] = 'img1.jpg'
+            pixmap = QPixmap(data['thiscar']).scaled(128 , 128)
+            global txtcar
+            txtcar.setPixmap(pixmap)
+            with open('data.json', 'w', ) as f:
+                json.dump(data, f, indent=4)
+
+    def col2():
+        global data
+        if data['buylist'][1] == 1:
+            data['thiscar'] = 'img2.jpg'
+            pixmap = QPixmap(data['thiscar']).scaled(128 , 128)
+            global txtcar
+            txtcar.setPixmap(pixmap)
+            with open('data.json', 'w', ) as f:
+                json.dump(data, f, indent=4)
+
+    def col3():
+        global data
+        if data['buylist'][2] == 1:
+            data['thiscar'] = 'img3.jpg'
+            pixmap = QPixmap(data['thiscar']).scaled(128 , 128)
+            global txtcar
+            txtcar.setPixmap(pixmap)
+            with open('data.json', 'w', ) as f:
+                json.dump(data, f, indent=4)
+
+    def col4():
+        global data
+        if data['buylist'][3] == 1:
+            data['thiscar'] = 'img4.jpg'
+            pixmap = QPixmap(data['thiscar']).scaled(128 , 128)
+            global txtcar
+            txtcar.setPixmap(pixmap)
+            with open('data.json', 'w', ) as f:
+                json.dump(data, f, indent=4)
+
+    def col5():
+        global data
+        if data['buylist'][4] == 1:
+            data['thiscar'] = 'img5.jpg'
+            pixmap = QPixmap(data['thiscar']).scaled(128 , 128)
+            global txtcar
+            txtcar.setPixmap(pixmap)
+            with open('data.json', 'w', ) as f:
+                json.dump(data, f, indent=4)
+
+    def col6():
+        global data
+        if data['buylist'][5] == 1:
+            data['thishouse'] = 'img6.jpg'
+            pixmap = QPixmap(data['thishouse']).scaled(128 , 128)
+            global txthouse
+            txthouse.setPixmap(pixmap)
+            with open('data.json', 'w', ) as f:
+                json.dump(data, f, indent=4)
+
+    def col7():
+        global data
+        if data['buylist'][6] == 1:
+            data['thishouse'] = 'img7.jpg'
+            pixmap = QPixmap(data['thishouse']).scaled(128 , 128)
+            global txthouse
+            txthouse.setPixmap(pixmap)
+            with open('data.json', 'w', ) as f:
+                json.dump(data, f, indent=4)
+
+    def col8():
+        global data
+        if data['buylist'][7] == 1:
+            data['thishouse'] = 'img8.jpg'
+            pixmap = QPixmap(data['thishouse']).scaled(128 , 128)
+            global txthouse
+            txthouse.setPixmap(pixmap)
+            with open('data.json', 'w', ) as f:
+                json.dump(data, f, indent=4)
+
+    def col9():
+        global data
+        if data['buylist'][8] == 1:
+            data['thishouse'] = 'img9.jpg'
+            pixmap = QPixmap(data['thishouse']).scaled(128 , 128)
+            global txthouse
+            txthouse.setPixmap(pixmap)
+            with open('data.json', 'w', ) as f:
+                json.dump(data, f, indent=4)
+
+    def col10():
+        global data
+        if data['buylist'][9] == 1:
+            data['thishouse'] = 'img10.jpg'
+            pixmap = QPixmap(data['thishouse']).scaled(128 , 128)
+            global txthouse
+            txthouse.setPixmap(pixmap)
+            with open('data.json', 'w', ) as f:
+                json.dump(data, f, indent=4)
+
+    def col11():
+        global data
+        if data['buylist'][10] == 1:
+            data['thismember'] = 'img11.jpg'
+            pixmap = QPixmap(data['thismember']).scaled(128 , 128)
+            global txtmamber
+            txtmamber.setPixmap(pixmap)
+            with open('data.json', 'w', ) as f:
+                json.dump(data, f, indent=4)
+
+    def col12():
+        global data
+        if data['buylist'][11] == 1:
+            data['thismember'] = 'img12.jpg'
+            pixmap = QPixmap(data['thismember']).scaled(128 , 128)
+            global txtmamber
+            txtmamber.setPixmap(pixmap)
+            with open('data.json', 'w', ) as f:
+                json.dump(data, f, indent=4)
+
+    def col13():
+        global data
+        if data['buylist'][12] == 1:
+            data['thismember'] = 'img13.jpg'
+            pixmap = QPixmap(data['thismember']).scaled(128 , 128)
+            global txtmamber
+            txtmamber.setPixmap(pixmap)
+            with open('data.json', 'w', ) as f:
+                json.dump(data, f, indent=4)
+
+    def col14():
+        global data
+        if data['buylist'][13] == 1:
+            data['thismember'] = 'img114.jpg'
+            pixmap = QPixmap(data['thismember']).scaled(128 , 128)
+            global txtmamber
+            txtmamber.setPixmap(pixmap)
+            with open('data.json', 'w', ) as f:
+                json.dump(data, f, indent=4)
+
+    def col15():
+        global data
+        if data['buylist'][14] == 1:
+            data['thismember'] = 'img15.jpg'
+            pixmap = QPixmap(data['thismember']).scaled(128 , 128)
+            global txtmamber
+            txtmamber.setPixmap(pixmap)
+            with open('data.json', 'w', ) as f:
+                json.dump(data, f, indent=4)
+
+
     def buybitcoin():
         teh = requests.get('https://cex.io/api/last_price/BTC/USD')
         if teh.status_code == 200:
@@ -555,6 +719,25 @@ def open_window_shop():
             nonlocal sbitcointxt
             sbitcointxt.setText(f'біткойнів у вас : {data["bitcoincount"]}')
 
+    def sellbitcoin():
+        teh = requests.get('https://cex.io/api/last_price/BTC/USD')
+        if teh.status_code == 200:
+            cost = json.loads(teh.text)
+            cost2 = float(cost["lprice"])
+        else:
+            print("sssddsdsddasfsgg")
+        nonlocal polesellbitcoin
+        count = int(polesellbitcoin.text())
+        global data
+        if data['bitcoincount'] >= count :
+            data['money'] += cost2 * count
+            data['bitcoincount'] -= count
+        with open('data.json', 'w', ) as f:
+            json.dump(data, f, indent=4)
+        txt.setText(f'ваші гроші : {data["money"]}')
+        nonlocal sbitcointxt
+        sbitcointxt.setText(f'біткойнів у вас : {data["bitcoincount"]}')
+
 
     bubutlist[0].clicked.connect(buy1)
     bubutlist[1].clicked.connect(buy2)
@@ -572,6 +755,22 @@ def open_window_shop():
     bubutlist[13].clicked.connect(buy14)
     bubutlist[14].clicked.connect(buy15)
     sbuybitcoinbtn.clicked.connect(buybitcoin)
+    sodbtnlist[0].clicked.connect(col1)
+    sodbtnlist[1].clicked.connect(col2)
+    sodbtnlist[2].clicked.connect(col3)
+    sodbtnlist[3].clicked.connect(col4)
+    sodbtnlist[4].clicked.connect(col5)
+    sodbtnlist[5].clicked.connect(col6)
+    sodbtnlist[6].clicked.connect(col7)
+    sodbtnlist[7].clicked.connect(col8)
+    sodbtnlist[8].clicked.connect(col9)
+    sodbtnlist[9].clicked.connect(col10)
+    sodbtnlist[10].clicked.connect(col11)
+    sodbtnlist[11].clicked.connect(col12)
+    sodbtnlist[12].clicked.connect(col13)
+    sodbtnlist[13].clicked.connect(col14)
+    sodbtnlist[14].clicked.connect(col15)
+    ssellbitcoinbtn.clicked.connect(sellbitcoin)
 
     window3.setLayout(mainline3)
     window3.show()
