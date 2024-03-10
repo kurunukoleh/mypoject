@@ -4,6 +4,7 @@ from PyQt5.QtGui import *
 import json
 import time
 import requests
+import game
 
 ob1 = 0.001
 ob2 = 0.01
@@ -144,6 +145,10 @@ def exitgame():
     with open('data.json', 'w', ) as f:
         json.dump(data, f, indent=4)
     app.quit()
+
+def startgame():
+    app.quit()
+    game.start()
 
 
 def cklick():
@@ -801,6 +806,7 @@ exitbtn.clicked.connect(exitgame)
 clbtn.clicked.connect(cklick)
 btnshop.clicked.connect(open_window_shop)
 btnbusnes.clicked.connect(open_window_busnes)
+btnback.clicked.connect(startgame)
 
 window.setLayout(mainline)
 window.show()
