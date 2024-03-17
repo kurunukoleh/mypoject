@@ -9,10 +9,14 @@ class Monkey :
         self.hitbox.y = y
         self.speed = speed
         self.moneylist = moneylist
-        self.points= 0
+        self.points = 0
+        self.font1 = pygame.font.Font(None, 36)
+        self.text = self.font1.render("Ви заробили :" , 1,(255 , 0 ,0) )
+        self.sound = pygame.mixer.Sound('padenie-truby.mp3')
 
     def render(self, window):
         window.blit(self.texture, (self.hitbox.x, self.hitbox.y))
+        window.blit(self.text , (10 , 10))
 
     def move(self):
         keys = pygame.key.get_pressed()
@@ -44,6 +48,8 @@ class Monkey :
             if i.hitbox.colliderect(self.hitbox):
                 self.moneylist.remove(i)
                 self.points += 1
+                self.text = self.font1.render(f"Ви заробили :{self.points*1000}", 1, (255, 0, 0))
+                self.sound.play()
 
     def getpint(self):
         return self.points

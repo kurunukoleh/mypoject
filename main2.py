@@ -17,8 +17,8 @@ scalepic = 128
 app = QApplication([])
 app.setStyleSheet("""
     QWidget {
-        background-color:#111111 ;
-        color : #ffffff;
+        background-color:#eeeeee ;
+        color : #eeeeee;
         font-size: 15px;
         min-width: 1px;
         min-height : 1px;
@@ -26,7 +26,7 @@ app.setStyleSheet("""
     }
 
     QPushButton {
-        background-color: #cc0000;
+        background-color: #00cc00;
         color : #ffffff;
         border-radius: 5px ;
         border-color: #ff0000;
@@ -39,7 +39,7 @@ app.setStyleSheet("""
     }
 
     QPushButton:hover {
-        background-color: #ff2200;
+        background-color: #008800;
         color : #ffffff;
         border-radius: 10px ;
         border-color: #111111;
@@ -54,8 +54,8 @@ app.setStyleSheet("""
 
 
     QLineEdit {
-        background-color: #333333 ;
-        color : #ffffff;
+        background-color: #cccccc ;
+        color : #000000;
         font-size: 15px;
         border-color: #000000;
         border-style: none;
@@ -65,19 +65,19 @@ app.setStyleSheet("""
     }
 
     QLineEdit:hover {
-        background-color: #444444 ;
-        color : #ffffff;
+        background-color: #ccffcc ;
+        color : #000000;
         font-size: 15px;
         border-radius: 5px ;
-        border-color: #ff0000;
+        border-color: #00ff00;
         border-style: solid;
         min-height: 50px;
     }
 
 
     QLabel{
-        background-color: #111111 ;
-        color : #ffffff;
+        background-color: #eeeeee ;
+        color : #000000;
         font-size: 15px;
         border-radius: 5px ;
         border-color: #ff0000;
@@ -85,11 +85,11 @@ app.setStyleSheet("""
     }
 
     QLabel:hover{
-        background-color: #111111 ;
-        color : #ffffff;
+        background-color: #eeeeee ;
+        color : #000000;
         font-size: 15px;
         border-radius: 5px ;
-        border-color: #000000;
+        border-color: #eeeeee;
         border-style: solid;
         border-width: 3px;
     }
@@ -102,7 +102,7 @@ clbtn = QPushButton("cklick")
 exitbtn = QPushButton("вийти з гри")
 btnshop = QPushButton('магазин')
 btnbusnes = QPushButton('бізнеси')
-btnback = QPushButton('міні гра')
+btnback = QPushButton('міні гра(10000)')
 
 txt = QLabel('ваші гроші :')
 txt2 = QLabel('НА ХРЕСТИК НЕ НАТИСКАТИ')
@@ -147,8 +147,15 @@ def exitgame():
     app.quit()
 
 def startgame():
+    global data
+    data['money'] -= 10000
+    with open('data.json', 'w', ) as f:
+        json.dump(data, f, indent=4)
     app.quit()
     game.start()
+    #with open('data.json', 'r', encoding='utf-8') as f:
+        #data = json.load(f)
+    #txt.setText(f'ваші гроші : {data["money"]}')
 
 
 def cklick():
@@ -716,7 +723,7 @@ def open_window_shop():
         count = int(polebuybitcoin.text())
         global data
         if data['money'] >= cost2*count:
-            data['money'] -= cost2*count
+            data['money'] -= round(cost2*count)
             data['bitcoincount'] += count
             with open('data.json', 'w', ) as f:
                 json.dump(data, f, indent=4)
@@ -735,7 +742,7 @@ def open_window_shop():
         count = int(polesellbitcoin.text())
         global data
         if data['bitcoincount'] >= count :
-            data['money'] += cost2 * count
+            data['money'] += round(cost2 * count)
             data['bitcoincount'] -= count
         with open('data.json', 'w', ) as f:
             json.dump(data, f, indent=4)
