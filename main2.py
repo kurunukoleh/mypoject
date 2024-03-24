@@ -146,70 +146,11 @@ def exitgame():
         json.dump(data, f, indent=4)
     app.quit()
 
-def startgame():
-    global data
-    data['money'] -= 10000
-    with open('data.json', 'w', ) as f:
-        json.dump(data, f, indent=4)
-    app.quit()
-    game.start()
-    #with open('data.json', 'r', encoding='utf-8') as f:
-        #data = json.load(f)
-    #txt.setText(f'ваші гроші : {data["money"]}')
 
 
 def cklick():
     data["money"] += 1
     txt.setText(f'ваші гроші : {data["money"]}')
-
-def openbusnes1():
-    if data["money"] >= 1000:
-        data["money"] -= 1000
-        data["busnes_count1"] += 1
-        with open('data.json', 'w', ) as f:
-            json.dump(data, f, indent=4)
-        txt.setText(f'ваші гроші : {data["money"]}')
-
-def openbusnes2():
-    if data["money"] >= 5000:
-        data["money"] -= 5000
-        data["busnes_count2"] += 1
-        with open('data.json', 'w', ) as f:
-            json.dump(data, f, indent=4)
-        txt.setText(f'ваші гроші : {data["money"]}')
-
-def openbusnes3():
-    if data["money"] >= 50000:
-        data["money"] -= 50000
-        data["busnes_count3"] += 1
-        with open('data.json', 'w', ) as f:
-            json.dump(data, f, indent=4)
-        txt.setText(f'ваші гроші : {data["money"]}')
-
-def openbusnes4():
-    if data["money"] >= 1000000:
-        data["money"] -= 1000000
-        data["busnes_count4"] += 1
-        with open('data.json', 'w', ) as f:
-            json.dump(data, f, indent=4)
-        txt.setText(f'ваші гроші : {data["money"]}')
-
-def openbusnes5():
-    if data["money"] >= 2000000:
-        data["money"] -= 2000000
-        data["busnes_count5"] += 1
-        with open('data.json', 'w', ) as f:
-            json.dump(data, f, indent=4)
-        txt.setText(f'ваші гроші : {data["money"]}')
-
-def openbusnes6():
-    if data["money"] >= 1000000000:
-        data["money"] -= 1000000000
-        data["busnes_count6"] += 1
-        with open('data.json', 'w', ) as f:
-            json.dump(data, f, indent=4)
-        txt.setText(f'ваші гроші : {data["money"]}')
-
 
 def open_window_busnes():
 
@@ -305,6 +246,78 @@ def open_window_busnes():
     #txt5.hide()
     #txt6.hide()
 
+    def openbusnes1():
+        global data
+        global txt
+        nonlocal  txt1
+        if data["money"] >= 1000:
+            data["money"] -= 1000
+            data["busnes_count1"] += 1
+            with open('data.json', 'w', ) as f:
+                json.dump(data, f, indent=4)
+            txt.setText(f'ваші гроші : {data["money"]}')
+            txt1.setText(f'відкрито : {data["busnes_count1"]}')
+
+    def openbusnes2():
+        global data
+        global txt
+        nonlocal txt2
+        if data["money"] >= 5000:
+            data["money"] -= 5000
+            data["busnes_count2"] += 1
+            with open('data.json', 'w', ) as f:
+                json.dump(data, f, indent=4)
+            txt.setText(f'ваші гроші : {data["money"]}')
+            txt2.setText(f'відкрито : {data["busnes_count1"]}')
+
+    def openbusnes3():
+        global data
+        global txt
+        nonlocal txt3
+        if data["money"] >= 50000:
+            data["money"] -= 50000
+            data["busnes_count3"] += 1
+            with open('data.json', 'w', ) as f:
+                json.dump(data, f, indent=4)
+            txt.setText(f'ваші гроші : {data["money"]}')
+            txt3.setText(f'відкрито : {data["busnes_count1"]}')
+
+    def openbusnes4():
+        global data
+        global txt
+        nonlocal txt4
+        if data["money"] >= 1000000:
+            data["money"] -= 1000000
+            data["busnes_count4"] += 1
+            with open('data.json', 'w', ) as f:
+                json.dump(data, f, indent=4)
+            txt.setText(f'ваші гроші : {data["money"]}')
+            txt4.setText(f'відкрито : {data["busnes_count1"]}')
+
+    def openbusnes5():
+        global data
+        global txt
+        nonlocal txt5
+        if data["money"] >= 2000000:
+            data["money"] -= 2000000
+            data["busnes_count5"] += 1
+            with open('data.json', 'w', ) as f:
+                json.dump(data, f, indent=4)
+            txt.setText(f'ваші гроші : {data["money"]}')
+            txt5.setText(f'відкрито : {data["busnes_count1"]}')
+
+    def openbusnes6():
+        global data
+        global txt
+        nonlocal txt6
+        if data["money"] >= 1000000000:
+            data["money"] -= 1000000000
+            data["busnes_count6"] += 1
+            with open('data.json', 'w', ) as f:
+                json.dump(data, f, indent=4)
+            txt.setText(f'ваші гроші : {data["money"]}')
+            txt6.setText(f'відкрито : {data["busnes_count1"]}')
+
     butonop1.clicked.connect(openbusnes1)
     butonop2.clicked.connect(openbusnes2)
     butonop3.clicked.connect(openbusnes3)
@@ -356,7 +369,7 @@ def open_window_shop():
         if data['buylist'][sh] == 1:
             sodbtnlist[sh].show()
 
-    stxtbitcoin =  QLabel('купити біткоїн')
+    stxtbitcoin =  QLabel(f'купити біткоїн({str(round(float(json.loads(requests.get("https://cex.io/api/last_price/BTC/USD").text)["lprice"])))})')
     sbuybitcoinbtn = QPushButton('купити')
     polebuybitcoin = QLineEdit()
     ssellbitcoinbtn = QPushButton('продати')
@@ -369,6 +382,20 @@ def open_window_shop():
     bitcoinline.addWidget(ssellbitcoinbtn)
     bitcoinline.addWidget(polesellbitcoin)
     bitcoinline.addWidget(sbitcointxt)
+
+    stxtether = QLabel(f'купити ефір({str(round(float(json.loads(requests.get("https://cex.io/api/last_price/ETH/USD").text)["lprice"])))})')
+    sbuyether = QPushButton('купити')
+    spolebuyether = QLineEdit()
+    ssellether = QPushButton('продати')
+    spolesellether = QLineEdit()
+    sethercount = QLabel(f'ефірів у вас : {data["ethercount"]}')
+    setherline = QHBoxLayout()
+    setherline.addWidget(stxtether)
+    setherline.addWidget(sbuyether)
+    setherline.addWidget(spolebuyether)
+    setherline.addWidget(ssellether)
+    setherline.addWidget(spolesellether)
+    setherline.addWidget(sethercount)
 
     for shln in range(15):
         shlinelist.append(QVBoxLayout())
@@ -395,171 +422,187 @@ def open_window_shop():
     mainline3.addLayout(shousesline)
     mainline3.addLayout(smambersline)
     mainline3.addLayout(bitcoinline)
+    mainline3.addLayout(setherline)
 
     def buy1():
         global data
-        if data['money'] >= 3000:
-            data['money'] -= 3000
-            data['buylist'][0] = 1
-            sodbtnlist[0].show()
-            with open('data.json', 'w', ) as f:
-                json.dump(data, f, indent=4)
-            global txt
-            txt.setText(f'ваші гроші : {data["money"]}')
+        if data['buylist'][0] == 0:
+            if data['money'] >= 3000:
+                data['money'] -= 3000
+                data['buylist'][0] = 1
+                sodbtnlist[0].show()
+                with open('data.json', 'w', ) as f:
+                    json.dump(data, f, indent=4)
+                global txt
+                txt.setText(f'ваші гроші : {data["money"]}')
 
     def buy2():
         global data
-        if data['money'] >= 6000:
-            data['money'] -= 6000
-            data['buylist'][1] = 1
-            sodbtnlist[1].show()
-            with open('data.json', 'w', ) as f:
-                json.dump(data, f, indent=4)
-            global txt
-            txt.setText(f'ваші гроші : {data["money"]}')
+        if data['buylist'][1] == 0:
+            if data['money'] >= 6000:
+                data['money'] -= 6000
+                data['buylist'][1] = 1
+                sodbtnlist[1].show()
+                with open('data.json', 'w', ) as f:
+                    json.dump(data, f, indent=4)
+                global txt
+                txt.setText(f'ваші гроші : {data["money"]}')
 
     def buy3():
         global data
-        if data['money'] >= 50000:
-            data['money'] -= 50000
-            data['buylist'][2] = 1
-            sodbtnlist[2].show()
-            with open('data.json', 'w', ) as f:
-                json.dump(data, f, indent=4)
-            global txt
-            txt.setText(f'ваші гроші : {data["money"]}')
+        if data['buylist'][2] == 0:
+            if data['money'] >= 50000:
+                data['money'] -= 50000
+                data['buylist'][2] = 1
+                sodbtnlist[2].show()
+                with open('data.json', 'w', ) as f:
+                    json.dump(data, f, indent=4)
+                global txt
+                txt.setText(f'ваші гроші : {data["money"]}')
 
     def buy4():
         global data
-        if data['money'] >= 300000:
-            data['money'] -= 300000
-            data['buylist'][3] = 1
-            sodbtnlist[3].show()
-            with open('data.json', 'w', ) as f:
-                json.dump(data, f, indent=4)
-            global txt
-            txt.setText(f'ваші гроші : {data["money"]}')
+        if data['buylist'][3] == 0:
+            if data['money'] >= 300000:
+                data['money'] -= 300000
+                data['buylist'][3] = 1
+                sodbtnlist[3].show()
+                with open('data.json', 'w', ) as f:
+                    json.dump(data, f, indent=4)
+                global txt
+                txt.setText(f'ваші гроші : {data["money"]}')
 
     def buy5():
         global data
-        if data['money'] >= 5000000:
-            data['money'] -= 5000000
-            data['buylist'][4] = 1
-            sodbtnlist[4].show()
-            with open('data.json', 'w', ) as f:
-                json.dump(data, f, indent=4)
-            global txt
-            txt.setText(f'ваші гроші : {data["money"]}')
+        if data['buylist'][4] == 0:
+            if data['money'] >= 5000000:
+                data['money'] -= 5000000
+                data['buylist'][4] = 1
+                sodbtnlist[4].show()
+                with open('data.json', 'w', ) as f:
+                    json.dump(data, f, indent=4)
+                global txt
+                txt.setText(f'ваші гроші : {data["money"]}')
 
     def buy6():
         global data
-        if data['money'] >= 20000:
-            data['money'] -= 20000
-            data['buylist'][5] = 1
-            sodbtnlist[5].show()
-            with open('data.json', 'w', ) as f:
-                json.dump(data, f, indent=4)
-            global txt
-            txt.setText(f'ваші гроші : {data["money"]}')
+        if data['buylist'][5] == 0:
+            if data['money'] >= 20000:
+                data['money'] -= 20000
+                data['buylist'][5] = 1
+                sodbtnlist[5].show()
+                with open('data.json', 'w', ) as f:
+                    json.dump(data, f, indent=4)
+                global txt
+                txt.setText(f'ваші гроші : {data["money"]}')
 
     def buy7():
         global data
-        if data['money'] >= 50000:
-            data['money'] -= 50000
-            data['buylist'][6] = 1
-            sodbtnlist[6].show()
-            with open('data.json', 'w', ) as f:
-                json.dump(data, f, indent=4)
-            global txt
-            txt.setText(f'ваші гроші : {data["money"]}')
+        if data['buylist'][6] == 0:
+            if data['money'] >= 50000:
+                data['money'] -= 50000
+                data['buylist'][6] = 1
+                sodbtnlist[6].show()
+                with open('data.json', 'w', ) as f:
+                    json.dump(data, f, indent=4)
+                global txt
+                txt.setText(f'ваші гроші : {data["money"]}')
 
     def buy8():
         global data
-        if data['money'] >= 100000:
-            data['money'] -= 100000
-            data['buylist'][7] = 1
-            sodbtnlist[7].show()
-            with open('data.json', 'w', ) as f:
-                json.dump(data, f, indent=4)
-            global txt
-            txt.setText(f'ваші гроші : {data["money"]}')
+        if data['buylist'][7] == 0:
+            if data['money'] >= 100000:
+                data['money'] -= 100000
+                data['buylist'][7] = 1
+                sodbtnlist[7].show()
+                with open('data.json', 'w', ) as f:
+                    json.dump(data, f, indent=4)
+                global txt
+                txt.setText(f'ваші гроші : {data["money"]}')
 
     def buy9():
         global data
-        if data['money'] >= 500000000:
-            data['money'] -= 500000000
-            data['buylist'][8] = 1
-            sodbtnlist[8].show()
-            with open('data.json', 'w', ) as f:
-                json.dump(data, f, indent=4)
-            global txt
-            txt.setText(f'ваші гроші : {data["money"]}')
+        if data['buylist'][8] == 0:
+            if data['money'] >= 500000000:
+                data['money'] -= 500000000
+                data['buylist'][8] = 1
+                sodbtnlist[8].show()
+                with open('data.json', 'w', ) as f:
+                    json.dump(data, f, indent=4)
+                global txt
+                txt.setText(f'ваші гроші : {data["money"]}')
 
     def buy10():
         global data
-        if data['money'] >= 1000000000:
-            data['money'] -= 1000000000
-            data['buylist'][9] = 1
-            sodbtnlist[9].show()
-            with open('data.json', 'w', ) as f:
-                json.dump(data, f, indent=4)
-            global txt
-            txt.setText(f'ваші гроші : {data["money"]}')
+        if data['buylist'][9] == 0:
+            if data['money'] >= 1000000000:
+                data['money'] -= 1000000000
+                data['buylist'][9] = 1
+                sodbtnlist[9].show()
+                with open('data.json', 'w', ) as f:
+                    json.dump(data, f, indent=4)
+                global txt
+                txt.setText(f'ваші гроші : {data["money"]}')
 
     def buy11():
         global data
-        if data['money'] >= 5000:
-            data['money'] -= 5000
-            data['buylist'][10] = 1
-            sodbtnlist[10].show()
-            with open('data.json', 'w', ) as f:
-                json.dump(data, f, indent=4)
-            global txt
-            txt.setText(f'ваші гроші : {data["money"]}')
+        if data['buylist'][10] == 0:
+            if data['money'] >= 5000:
+                data['money'] -= 5000
+                data['buylist'][10] = 1
+                sodbtnlist[10].show()
+                with open('data.json', 'w', ) as f:
+                    json.dump(data, f, indent=4)
+                global txt
+                txt.setText(f'ваші гроші : {data["money"]}')
 
     def buy12():
         global data
-        if data['money'] >= 30000:
-            data['money'] -= 30000
-            data['buylist'][11] = 1
-            sodbtnlist[11].show()
-            with open('data.json', 'w', ) as f:
-                json.dump(data, f, indent=4)
-            global txt
-            txt.setText(f'ваші гроші : {data["money"]}')
+        if data['buylist'][11] == 0:
+            if data['money'] >= 30000:
+                data['money'] -= 30000
+                data['buylist'][11] = 1
+                sodbtnlist[11].show()
+                with open('data.json', 'w', ) as f:
+                    json.dump(data, f, indent=4)
+                global txt
+                txt.setText(f'ваші гроші : {data["money"]}')
 
     def buy13():
         global data
-        if data['money'] >= 3000000:
-            data['money'] -= 3000000
-            data['buylist'][12] = 1
-            sodbtnlist[12].show()
-            with open('data.json', 'w', ) as f:
-                json.dump(data, f, indent=4)
-            global txt
-            txt.setText(f'ваші гроші : {data["money"]}')
+        if data['buylist'][12] == 0:
+            if data['money'] >= 3000000:
+                data['money'] -= 3000000
+                data['buylist'][12] = 1
+                sodbtnlist[12].show()
+                with open('data.json', 'w', ) as f:
+                    json.dump(data, f, indent=4)
+                global txt
+                txt.setText(f'ваші гроші : {data["money"]}')
 
     def buy14():
         global data
-        if data['money'] >= 20000000:
-            data['money'] -= 20000000
-            data['buylist'][13] = 1
-            sodbtnlist[13].show()
-            with open('data.json', 'w', ) as f:
-                json.dump(data, f, indent=4)
-            global txt
-            txt.setText(f'ваші гроші : {data["money"]}')
+        if data['buylist'][13] == 0:
+            if data['money'] >= 20000000:
+                data['money'] -= 20000000
+                data['buylist'][13] = 1
+                sodbtnlist[13].show()
+                with open('data.json', 'w', ) as f:
+                    json.dump(data, f, indent=4)
+                global txt
+                txt.setText(f'ваші гроші : {data["money"]}')
 
     def buy15():
         global data
-        if data['money'] >= 9999999999:
-            data['money'] -= 9999999999
-            data['buylist'][14] = 1
-            sodbtnlist[14].show()
-            with open('data.json', 'w', ) as f:
-                json.dump(data, f, indent=4)
-            global txt
-            txt.setText(f'ваші гроші : {data["money"]}')
+        if data['buylist'][14] == 0:
+            if data['money'] >= 9999999999:
+                data['money'] -= 9999999999
+                data['buylist'][14] = 1
+                sodbtnlist[14].show()
+                with open('data.json', 'w', ) as f:
+                    json.dump(data, f, indent=4)
+                global txt
+                txt.setText(f'ваші гроші : {data["money"]}')
 
     def col1():
         global data
@@ -750,6 +793,44 @@ def open_window_shop():
         nonlocal sbitcointxt
         sbitcointxt.setText(f'біткойнів у вас : {data["bitcoincount"]}')
 
+    def buyether():
+        teh = requests.get('https://cex.io/api/last_price/ETH/USD')
+        if teh.status_code == 200:
+            cost = json.loads(teh.text)
+            cost2 = float(cost["lprice"])
+        else:
+            print("sssddsdsddasfsgg")
+        nonlocal spolebuyether
+        count = int(spolebuyether.text())
+        global data
+        if data['money'] >= cost2*count:
+            data['money'] -= round(cost2*count)
+            data['ethercount'] += count
+            with open('data.json', 'w', ) as f:
+                json.dump(data, f, indent=4)
+            txt.setText(f'ваші гроші : {data["money"]}')
+            nonlocal stxtether
+            sethercount.setText(f'ефірів у вас : {data["ethercount"]}')
+
+    def sellether():
+        teh = requests.get('https://cex.io/api/last_price/ETH/USD')
+        if teh.status_code == 200:
+            cost = json.loads(teh.text)
+            cost2 = float(cost["lprice"])
+        else:
+            print("sssddsdsddasfsgg")
+        nonlocal spolesellether
+        count = int(spolesellether.text())
+        global data
+        if data['ethercount'] >= count :
+            data['money'] += round(cost2 * count)
+            data['ethercount'] -= count
+        with open('data.json', 'w', ) as f:
+            json.dump(data, f, indent=4)
+        txt.setText(f'ваші гроші : {data["money"]}')
+        nonlocal stxtether
+        sethercount.setText(f'ефірів у вас : {data["ethercount"]}')
+
 
     bubutlist[0].clicked.connect(buy1)
     bubutlist[1].clicked.connect(buy2)
@@ -767,6 +848,7 @@ def open_window_shop():
     bubutlist[13].clicked.connect(buy14)
     bubutlist[14].clicked.connect(buy15)
     sbuybitcoinbtn.clicked.connect(buybitcoin)
+    sbuyether.clicked.connect(buyether)
     sodbtnlist[0].clicked.connect(col1)
     sodbtnlist[1].clicked.connect(col2)
     sodbtnlist[2].clicked.connect(col3)
@@ -783,6 +865,7 @@ def open_window_shop():
     sodbtnlist[13].clicked.connect(col14)
     sodbtnlist[14].clicked.connect(col15)
     ssellbitcoinbtn.clicked.connect(sellbitcoin)
+    ssellether.clicked.connect(sellether)
 
     window3.setLayout(mainline3)
     window3.show()
@@ -808,6 +891,18 @@ mainline.addLayout(line1)
 mainline.addWidget(clbtn)
 mainline.addWidget(txt)
 mainline.addLayout(line2)
+def startgame():
+    global data
+    data['money'] -= 10000
+    with open('data.json', 'w', ) as f:
+        json.dump(data, f, indent=4)
+    game.start()
+    with open('data.json', 'r', encoding='utf-8') as f:
+        data = json.load(f)
+    txt.setText(f'ваші гроші : {data["money"]}')
+    #with open('data.json', 'r', encoding='utf-8') as f:
+        #data = json.load(f)
+    #txt.setText(f'ваші гроші : {data["money"]}')
 
 exitbtn.clicked.connect(exitgame)
 clbtn.clicked.connect(cklick)

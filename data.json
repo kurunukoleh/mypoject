@@ -1,16 +1,17 @@
 {
-    "money": 2688666498,
+    "money": 40238,
     "busnes_count1": 0,
     "busnes_count2": 0,
     "busnes_count3": 0,
     "busnes_count4": 0,
-    "busnes_count5": 86,
+    "busnes_count5": 0,
     "busnes_count6": 0,
     "thiscar": "img2.jpg",
-    "thishouse": "img7.jpg",
+    "thishouse": "img9.jpg",
     "thismember": "img15.jpg",
-    "bitcoincount": 55004,
-    "fixtime": 1709563075.0875564,
+    "bitcoincount": 8004,
+    "ethercount": 1000,
+    "fixtime": 1711295750.4986467,
     "buylist": [
         1,
         1,
@@ -26,6 +27,6 @@
         1,
         1,
         1,
-        1
+        0
     ]
 }
